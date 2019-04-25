@@ -24,9 +24,12 @@ module keyboard_TOP(
     keyboard_receiver KeyR(.sysclk(sysclk), .keyclk(keyclk), .keydata(keydata), .keycode(keycodecheck), .flag(flag));
     keyboard_decoder KeyD(.decletter(keycode), .sysclk(sysclk), .encSSD(SSDcode));
     
+    always @(negedge keyclk) begin
+        led <= 1'b1;
+    end
+    
     always @(posedge sysclk) begin
         if (flag == 1'b1) begin
-            led <= 1'b1;
             keycodetest <= keycodecheck;
         end
     end

@@ -1,0 +1,85 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Tue Apr 23 03:32:17 2019
+| Host         : OldMateLaptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file keyboard_TOP_control_sets_placed.rpt
+| Design       : keyboard_TOP
+| Device       : xc7a35t
+-----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    17 |
+| Unused register locations in slices containing registers |    85 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      1 |           11 |
+|      4 |            1 |
+|      6 |            1 |
+|      7 |            2 |
+|      8 |            2 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              11 |            6 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              13 |            4 |
+| Yes          | No                    | No                     |              23 |           10 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               4 |            1 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+-------------------------+--------------------------+------------------+----------------+
+|       Clock Signal      |      Enable Signal      |     Set/Reset Signal     | Slice Load Count | Bel Load Count |
++-------------------------+-------------------------+--------------------------+------------------+----------------+
+| ~keyclk_IBUF_BUFG       |                         |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[2]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[1]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[0]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[5]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[3]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[4]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode[6]_i_1_n_0 |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycode__0[7]      |                          |                1 |              1 |
+|  sysclk_IBUF_BUFG       |                         |                          |                1 |              1 |
+|  keyread_reg_i_2_n_0    |                         |                          |                1 |              1 |
+| ~keyclk_IBUF_BUFG       | KeyR/keycount           | KeyR/keycount[3]_i_1_n_0 |                1 |              4 |
+|  sysclk_IBUF_BUFG       |                         | keycode[7]               |                3 |              6 |
+|  sysclk_IBUF_BUFG       |                         | SSDcathode[6]_i_1_n_0    |                1 |              7 |
+|  sysclk_IBUF_BUFG       | prevSSD                 |                          |                1 |              7 |
+|  keycode_reg[7]_i_1_n_0 |                         |                          |                3 |              8 |
+|  sysclk_IBUF_BUFG       | KeyR/E[0]               |                          |                1 |              8 |
++-------------------------+-------------------------+--------------------------+------------------+----------------+
+
+

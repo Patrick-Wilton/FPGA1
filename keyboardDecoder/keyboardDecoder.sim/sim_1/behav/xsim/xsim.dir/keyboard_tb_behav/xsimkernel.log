@@ -1,0 +1,7 @@
+Running: xsim.dir/keyboard_tb_behav/xsimk.exe -simmode gui -wdb keyboard_tb_behav.wdb -simrunnum 0 -socket 49946
+Design successfully loaded
+Design Loading Memory Usage: 4912 KB (Peak: 4912 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 13548 KB (Peak: 13548 KB)
+Simulation CPU Usage: 265 ms

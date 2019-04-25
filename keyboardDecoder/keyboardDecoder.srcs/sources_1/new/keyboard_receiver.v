@@ -8,7 +8,7 @@ module keyboard_receiver(
     output reg flag
     );
     
-    reg [3:0] keycount;
+    reg [3:0] keycount = 0;
     
     always @(negedge keyclk) begin
         case(keycount)
