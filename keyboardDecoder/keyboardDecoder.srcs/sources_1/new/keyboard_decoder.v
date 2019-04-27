@@ -27,7 +27,7 @@ module keyboard_decoder(
     parameter S = 8'h1B;
     parameter t = 8'h2C;
     
-    always @(posedge sysclk) begin
+    always @(*) begin
         case(decletter)
             A: encSSD = 7'b0001000;
             E: encSSD = 7'b0110000;
@@ -46,7 +46,7 @@ module keyboard_decoder(
             r: encSSD = 7'b1111010;
             S: encSSD = 7'b0100100;
             t: encSSD = 7'b1110000;
-            default: encSSD = 7'b1111110;
+            default: encSSD = 7'b1111111;
         endcase
     end 
 endmodule

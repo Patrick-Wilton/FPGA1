@@ -14,7 +14,10 @@ module keyboard_TOP(
     input wire prevword,
     input wire nextsen,
     input wire prevsen,
-    //input wire autoread,
+    input wire autoread,
+    
+    //Sentence Write Inputs
+    input wire keywrite,
     
     //System Inputs
     input wire syson,
@@ -25,17 +28,19 @@ module keyboard_TOP(
     //LED Outputs
     output reg [3:0] sentenceled,
     output reg [7:0] wordled,
-    output reg led,
+    output reg [1:0] ledmode,
     
     //SSD Outputs
     output reg [6:0] SSDcathode,
     output reg [3:0] SSDanode
     );
     
+    /////////////////////////////////////////////////////////////////////////////////////////
     
     //Keyboard Variables
     wire [7:0] keycodecheck;
     wire [6:0] SSDcode;
+    reg [6:0] tempSC;
     wire flag;
     reg [7:0] keycodetest;
     reg [7:0] keycode;
@@ -47,12 +52,18 @@ module keyboard_TOP(
     wire prevworddeb;
     wire nextsendeb;
     wire prevsendeb;
+    wire anodepulse;
+    wire autopulse;
     wire [7:0] letter;
     reg [1:0] SSDcounter = 2'd0;
-    reg [3:0] wordcounter = 4'd0;
+    reg [2:0] wordcounter = 3'd0;
     reg [1:0] sencounter = 2'd0;
     wire [6:0] tempSSDcathode;
     reg [3:0] tempSSDanode;
+    
+    //Sentence Writer Variables
+    reg [1:0] letcounter = 2'd0;
+    reg [7:0] keystore;
     
     //Keyboard Submodules
     keyboard_receiver KeyR(.sysclk(sysclk), .keyclk(keyclk), .keydata(keydata), .keycode(keycodecheck), .flag(flag));
@@ -86,16 +97,8 @@ module keyboard_TOP(
     );
     
     keyboard_decoder LetD (.decletter(letter), .sysclk(sysclk), .encSSD(tempSSDcathode));
-    
-    //System Level Reset
-    always @(posedge sysclk) begin
-        if (reset == 1'b1) begin
-            keycode <= 8'd0;
-            SSDcounter <= 2'd0;
-            wordcounter <= 4'd0;
-            sencounter <= 2'd0;
-        end
-    end
+    heartbeat #(19) SSDpulse (.sysclk(sysclk), .reset(reset), .pulse(anodepulse));
+    heartbeat #(26) Readpulse (.sysclk(sysclk), .reset(reset), .pulse(autopulse));
     
     //Assigns a testing variable if the keydata flag was raised
     always @(posedge sysclk) begin
@@ -109,62 +112,81 @@ module keyboard_TOP(
         if (keycodetest == 8'hf0) begin
             keyread <= 1'b1;
         end else if (keyread == 1'b1) begin
-            keycode <= keycodetest;
-            keyread <= 1'b0;
+            if (keywrite == 1'b0) begin
+                keycode <= keycodetest;
+                keyread <= 1'b0;
+            end else begin
+                if (keycodetest == 8'h66 && letcounter > 2'd0) begin
+                    keystore <= 8'd0;
+                    letcounter <= letcounter - 2'd1;
+                    keyread <= 1'b0;
+                end else if (letcounter < 2'd3) begin
+                    keystore <= keycodetest;
+                    letcounter <= letcounter + 2'd1;
+                    keyread <= 1'b0;
+                end
+            end
         end
+    end
+    
+    always @(SSDcode) begin
+        if (holdenable == 1'b1) tempSC = prevSSD;
+        else tempSC = SSDcode;
     end
     
     // Increasing and decreasing sentence/word counters
      always @(posedge sysclk) begin
-        if (nextworddeb == 1'b1) wordcounter <= wordcounter + 4'd1;
-        else if (prevworddeb == 1'b1) wordcounter <= wordcounter - 4'd1;
-        else if (nextsendeb == 1'b1) sencounter <= sencounter + 2'd1;
-        else if (prevsendeb == 1'b1) sencounter <= sencounter - 2'd1;
+        if (autoread == 1'b1 && autopulse == 1'b1) wordcounter <= wordcounter + 3'd1;
+        else if (autoread == 1'b0 && (nextworddeb == 1'b1 || keycode == 8'h6A)) wordcounter <= wordcounter + 3'd1;
+        else if (autoread ==1'b0 && (prevworddeb == 1'b1 || keycode == 8'h61)) wordcounter <= wordcounter - 3'd1;
+        if (nextsendeb == 1'b1 || keycode == 8'h63) begin
+            sencounter <= sencounter + 2'd1;
+        end else if (prevsendeb == 1'b1 || keycode == 8'h60) begin
+            sencounter <= sencounter - 2'd1;
+        end
     end
     
     //Assigns SSD anode depending on current letter
-    always @(posedge sysclk) begin
+    always @(posedge anodepulse) begin
         SSDcounter <= SSDcounter + 2'd1;
-        case(SSDcounter)
-            2'd0: tempSSDanode = 4'b0111;
-            2'd1: tempSSDanode = 4'b1011;
-            2'd2: tempSSDanode = 4'b1101;
-            2'd3: tempSSDanode = 4'b1110;
-        endcase
     end
     
     // Keyboard System functionality
     always @(posedge sysclk) begin
         if (syson == 1'b0) begin
             SSDcathode <= 7'b1111111;
-            led <= 1'b0;
         end else if (changemode == 1'b0) begin
             if (holdenable) begin
                 SSDcathode <= prevSSD;
                 SSDanode <= 4'b0111;
             end else begin
-                SSDcathode <= SSDcode;
+                SSDcathode <= tempSC;
                 prevSSD <= SSDcathode;
                 SSDanode <= 4'b0111;
             end
         end else if (changemode == 1'b1) begin
-            led <= 1'b1;
             SSDcathode <= tempSSDcathode;
             SSDanode <= tempSSDanode;
         end
     end
     
-    //Assigns sentence and word LED indicators
-    always @(posedge sysclk) begin
+    //Assigns sentence, word and SSD LEDs
+    always @(*) begin
+        case(SSDcounter)
+            2'd0: tempSSDanode = 4'b0111;
+            2'd1: tempSSDanode = 4'b1011;
+            2'd2: tempSSDanode = 4'b1101;
+            2'd3: tempSSDanode = 4'b1110;
+        endcase
         case(wordcounter)
-            4'd0: wordled = 8'b10000000;
-            4'd1: wordled = 8'b11000000;
-            4'd2: wordled = 8'b11100000;
-            4'd3: wordled = 8'b11110000;
-            4'd4: wordled = 8'b11111000;
-            4'd5: wordled = 8'b11111100;
-            4'd6: wordled = 8'b11111110;
-            4'd7: wordled = 8'b11111111;
+            3'd0: wordled = 8'b10000000;
+            3'd1: wordled = 8'b11000000;
+            3'd2: wordled = 8'b11100000;
+            3'd3: wordled = 8'b11110000;
+            3'd4: wordled = 8'b11111000;
+            3'd5: wordled = 8'b11111100;
+            3'd6: wordled = 8'b11111110;
+            3'd7: wordled = 8'b11111111;
         endcase
         case(sencounter)
             2'd0: sentenceled = 4'b1000;
@@ -172,6 +194,9 @@ module keyboard_TOP(
             2'd2: sentenceled = 4'b1110;
             2'd3: sentenceled = 4'b1111;
         endcase
+        if (changemode == 1'b0 && keywrite == 1'b0) ledmode = 2'b10;
+        else if (changemode == 1'b1 && keywrite == 1'b0) ledmode = 2'b01;
+        else if (changemode == 1'b1 && keywrite == 1'b1) ledmode = 2'b11;
+        else if (changemode == 1'b0 && keywrite == 1'b1) ledmode = 2'b00;
     end
-    
 endmodule

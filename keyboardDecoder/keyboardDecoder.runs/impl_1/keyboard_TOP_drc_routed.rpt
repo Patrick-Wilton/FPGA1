@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sat Apr 27 06:39:34 2019
+| Date         : Sun Apr 28 09:56:06 2019
 | Host         : OldMateLaptop running 64-bit major release  (build 9200)
 | Command      : report_drc -file keyboard_TOP_drc_routed.rpt -pb keyboard_TOP_drc_routed.pb -rpx keyboard_TOP_drc_routed.rpx
 | Design       : keyboard_TOP
@@ -24,12 +24,14 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 1
-+----------+----------+-----------------------------------------------------+------------+
-| Rule     | Severity | Description                                         | Violations |
-+----------+----------+-----------------------------------------------------+------------+
-| CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-+----------+----------+-----------------------------------------------------+------------+
+             Violations found: 6
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| CFGBVS-1    | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties         | 1          |
+| PDRC-153    | Warning  | Gated clock check                                           | 4          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -44,6 +46,32 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net SSDpulse/count_reg[1]_0 is a gated clock net sourced by a combinational pin SSDpulse/SSDcounter[1]_i_2/O, cell SSDpulse/SSDcounter[1]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net keycode_reg[7]_i_1_n_0 is a gated clock net sourced by a combinational pin keycode_reg[7]_i_1/O, cell keycode_reg[7]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net keyread_reg_i_2_n_0 is a gated clock net sourced by a combinational pin keyread_reg_i_2/O, cell keyread_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net letcounter_reg[1]_i_2_n_0 is a gated clock net sourced by a combinational pin letcounter_reg[1]_i_2/O, cell letcounter_reg[1]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT SSDpulse/SSDcounter[1]_i_2 is driving clock pin of 2 cells. This could lead to large hold time violations. Involved cells are:
+SSDcounter_reg[0], SSDcounter_reg[1]
 Related violations: <none>
 
 

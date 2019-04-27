@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../Downloads/Lab 5 resources/doubledebounce.v" \
+"../../../../../../Downloads/Lab 5 resources/heartbeat.v" \
+"../../../../keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v" \
+"../../../../keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v" \
+"../../../../keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v" \
+"../../../../keyboardDecoder.srcs/sources_1/new/sentence_decoder.v" \
+"../../../../keyboardDecoder.srcs/sim_1/new/keyboard_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

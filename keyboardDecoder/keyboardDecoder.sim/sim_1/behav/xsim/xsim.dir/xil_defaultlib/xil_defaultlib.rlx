@@ -2,8 +2,11 @@
 2018.3
 Dec  7 2018
 00:33:28
-C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/impl_1/keyboard_tb.v,1555900970,verilog,,,,keyboard_tb,,,,,,,,
+C:/Users/patre/Downloads/Lab 5 resources/doubledebounce.v,1363753448,verilog,,C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v,,doubledebounce,,,,,,,,
+C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v,1556386680,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v,,heartbeat,,,,,,,,
 C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
-C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v,1555822972,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v,,keyboard_TOP,,,,,,,,
-C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v,1555814374,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v,,keyboard_decoder,,,,,,,,
-C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v,1555899839,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/impl_1/keyboard_tb.v,,keyboard_receiver,,,,,,,,
+C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sim_1/new/keyboard_sim.v,1556381730,verilog,,,,keyboard_sim,,,,,,,,
+C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v,1556392717,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v,,keyboard_TOP,,,,,,,,
+C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v,1556384013,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v,,keyboard_decoder,,,,,,,,
+C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v,1555899839,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v,,keyboard_receiver,,,,,,,,
+C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v,1556384020,verilog,,C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sim_1/new/keyboard_sim.v,,sentence_decoder,,,,,,,,

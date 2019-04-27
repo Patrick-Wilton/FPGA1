@@ -66,13 +66,18 @@ set_property PACKAGE_PIN P1 [get_ports {wordled[6]}]
 set_property PACKAGE_PIN L1 [get_ports {wordled[7]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {wordled[7]}]
 	
-set_property PACKAGE_PIN W18 [get_ports led]
-	set_property IOSTANDARD LVCMOS33 [get_ports led]
+set_property PACKAGE_PIN U14 [get_ports {ledmode[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {ledmode[1]}]
+set_property PACKAGE_PIN U15 [get_ports {ledmode[0]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {ledmode[0]}]
 	
-#set_property PACKAGE_PIN T1 [get_ports {autoread]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {autoread]
+set_property PACKAGE_PIN T1 [get_ports autoread]
+	set_property IOSTANDARD LVCMOS33 [get_ports autoread]
 	
-set_property PACKAGE_PIN W16 [get_ports reset]
+set_property PACKAGE_PIN W16 [get_ports keywrite]
+	set_property IOSTANDARD LVCMOS33 [get_ports keywrite]
+	
+set_property PACKAGE_PIN U1 [get_ports reset]
 	set_property IOSTANDARD LVCMOS33 [get_ports reset]
 	
 set_property PACKAGE_PIN V16 [get_ports changemode]
