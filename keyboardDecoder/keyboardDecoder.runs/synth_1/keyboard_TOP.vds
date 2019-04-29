@@ -2,22 +2,22 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Sun Apr 28 09:54:26 2019
-# Process ID: 16468
+# Start of session at: Mon Apr 29 19:19:26 2019
+# Process ID: 6984
 # Current directory: C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/synth_1
 # Command line: vivado.exe -log keyboard_TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source keyboard_TOP.tcl
 # Log file: C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/synth_1/keyboard_TOP.vds
 # Journal file: C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source keyboard_TOP.tcl -notrace
-Command: synth_design -top keyboard_TOP -part xc7a35tcpg236-1
+Command: synth_design -top keyboard_TOP -part xc7a100tcsg324-1
 Starting synth_design
-Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
-INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 15792 
+INFO: Helper process launched with PID 3064 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 362.777 ; gain = 100.738
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 364.102 ; gain = 100.879
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'keyboard_TOP' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:3]
 INFO: [Synth 8-6157] synthesizing module 'keyboard_receiver' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v:3]
@@ -42,31 +42,41 @@ INFO: [Synth 8-6157] synthesizing module 'keyboard_decoder' [C:/Users/patre/FPGA
 	Parameter S bound to: 8'b00011011 
 	Parameter t bound to: 8'b00101100 
 INFO: [Synth 8-6155] done synthesizing module 'keyboard_decoder' (2#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v:3]
+INFO: [Synth 8-6157] synthesizing module 'keyboard_encoder' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:4]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:40]
+WARNING: [Synth 8-567] referenced signal 'letter' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'letcounter' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'customword' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'wordcounter' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'customsentence' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'prevWC' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'currentsentence' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+WARNING: [Synth 8-567] referenced signal 'curWC' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'keyboard_encoder' (3#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:4]
 INFO: [Synth 8-6157] synthesizing module 'doubledebounce' [C:/Users/patre/Downloads/Lab 5 resources/doubledebounce.v:1]
 INFO: [Synth 8-6157] synthesizing module 'heartbeat' [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
 	Parameter WIDTH bound to: 21 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'heartbeat' (3#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'doubledebounce' (4#1) [C:/Users/patre/Downloads/Lab 5 resources/doubledebounce.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'heartbeat' (4#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'doubledebounce' (5#1) [C:/Users/patre/Downloads/Lab 5 resources/doubledebounce.v:1]
 INFO: [Synth 8-6157] synthesizing module 'sentence_decoder' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:4]
-INFO: [Synth 8-226] default block is never used [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:25]
-INFO: [Synth 8-6155] done synthesizing module 'sentence_decoder' (5#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:4]
+INFO: [Synth 8-226] default block is never used [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:31]
+WARNING: [Synth 8-6014] Unused sequential element sentence_reg was removed.  [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:29]
+WARNING: [Synth 8-6014] Unused sequential element word_reg was removed.  [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'sentence_decoder' (6#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v:4]
 INFO: [Synth 8-6157] synthesizing module 'heartbeat__parameterized0' [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
 	Parameter WIDTH bound to: 19 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'heartbeat__parameterized0' (5#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'heartbeat__parameterized0' (6#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
 INFO: [Synth 8-6157] synthesizing module 'heartbeat__parameterized1' [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
 	Parameter WIDTH bound to: 26 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'heartbeat__parameterized1' (5#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
-WARNING: [Synth 8-567] referenced signal 'keyread' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:111]
-WARNING: [Synth 8-567] referenced signal 'keywrite' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:111]
-WARNING: [Synth 8-567] referenced signal 'letcounter' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:111]
-WARNING: [Synth 8-567] referenced signal 'holdenable' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:132]
-WARNING: [Synth 8-567] referenced signal 'prevSSD' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:132]
-INFO: [Synth 8-6155] done synthesizing module 'keyboard_TOP' (6#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'heartbeat__parameterized1' (6#1) [C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v:1]
+WARNING: [Synth 8-567] referenced signal 'keyread' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:132]
+WARNING: [Synth 8-567] referenced signal 'keywrite' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:132]
+WARNING: [Synth 8-567] referenced signal 'letcounter' should be on the sensitivity list [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:132]
+INFO: [Synth 8-6155] done synthesizing module 'keyboard_TOP' (7#1) [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:3]
 WARNING: [Synth 8-3331] design keyboard_decoder has unconnected port sysclk
-WARNING: [Synth 8-3331] design sentence_decoder has unconnected port sysclk
 WARNING: [Synth 8-3331] design keyboard_receiver has unconnected port sysclk
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 419.582 ; gain = 157.543
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 420.660 ; gain = 157.438
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -79,12 +89,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 419.582 ; gain = 157.543
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 420.660 ; gain = 157.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 419.582 ; gain = 157.543
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 420.660 ; gain = 157.438
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -93,40 +103,44 @@ Parsing XDC File [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/const
 Finished Parsing XDC File [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/constrs_1/new/keyboard_constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/constrs_1/new/keyboard_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/keyboard_TOP_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/keyboard_TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 722.984 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 768.082 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 722.984 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 768.082 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 722.984 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 722.984 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 768.082 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 768.082 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 722.984 ; gain = 460.945
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 768.082 ; gain = 504.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
-Loading part: xc7a35tcpg236-1
+Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 722.984 ; gain = 460.945
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 768.082 ; gain = 504.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 722.984 ; gain = 460.945
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 768.082 ; gain = 504.859
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "keycount" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5587] ROM size for "encSSD" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-327] inferring latch for variable 'keycode_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:70]
-WARNING: [Synth 8-327] inferring latch for variable 'ledmode_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:197]
-WARNING: [Synth 8-327] inferring latch for variable 'keyread_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:113]
-WARNING: [Synth 8-327] inferring latch for variable 'letcounter_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:119]
+INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-327] inferring latch for variable 'customsentence_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:43]
+WARNING: [Synth 8-327] inferring latch for variable 'currentsentence_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:46]
+WARNING: [Synth 8-327] inferring latch for variable 'customword_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v:42]
+WARNING: [Synth 8-327] inferring latch for variable 'keycode_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:73]
+WARNING: [Synth 8-327] inferring latch for variable 'keyread_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:134]
+WARNING: [Synth 8-327] inferring latch for variable 'letcounter_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:80]
+WARNING: [Synth 8-327] inferring latch for variable 'keystore_reg' [C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v:82]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 722.984 ; gain = 460.945
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 768.082 ; gain = 504.859
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -139,27 +153,33 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 3     
 +---Registers : 
-	                8 Bit    Registers := 2     
+	                8 Bit    Registers := 4     
 	                7 Bit    Registers := 2     
-	                4 Bit    Registers := 2     
+	                4 Bit    Registers := 4     
 	                3 Bit    Registers := 5     
-	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 5     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 6     
 +---Muxes : 
-	   4 Input    255 Bit        Muxes := 1     
+	   4 Input    256 Bit        Muxes := 4     
+	   2 Input    256 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 2     
 	   4 Input      8 Bit        Muxes := 1     
 	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
 	  18 Input      7 Bit        Muxes := 2     
 	   2 Input      7 Bit        Muxes := 4     
 	   2 Input      4 Bit        Muxes := 1     
 	   4 Input      4 Bit        Muxes := 2     
 	   3 Input      3 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 3     
-	   3 Input      1 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   3 Input      1 Bit        Muxes := 3     
 	  12 Input      1 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 13    
 ---------------------------------------------------------------------------------
@@ -175,18 +195,21 @@ Detailed RTL Component Info :
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 3     
 +---Registers : 
-	                8 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
 	                7 Bit    Registers := 2     
-	                4 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
 	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 2     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
 +---Muxes : 
 	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
 	   2 Input      7 Bit        Muxes := 2     
 	   4 Input      4 Bit        Muxes := 2     
 	   3 Input      3 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      2 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 13    
+	   3 Input      1 Bit        Muxes := 2     
 Module keyboard_receiver 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -204,6 +227,17 @@ Detailed RTL Component Info :
 +---Muxes : 
 	  18 Input      7 Bit        Muxes := 1     
 	   2 Input      7 Bit        Muxes := 1     
+Module keyboard_encoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input    256 Bit        Muxes := 3     
+	   4 Input     32 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
 Module doubledebounce 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -211,8 +245,11 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 2     
 Module sentence_decoder 
 Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
 +---Muxes : 
-	   4 Input    255 Bit        Muxes := 1     
+	   2 Input    256 Bit        Muxes := 1     
+	   4 Input    256 Bit        Muxes := 1     
 	   4 Input      8 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
@@ -221,8 +258,8 @@ Finished RTL Hierarchical Component Statistics
 Start Part Resource Summary
 ---------------------------------------------------------------------------------
 Part Resources:
-DSPs: 90 (col length:60)
-BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
@@ -231,13 +268,15 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5587] ROM size for "KeyD/encSSD" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "LetD/encSSD" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3917] design keyboard_TOP has port sentenceled[3] driven by constant 1
-WARNING: [Synth 8-3917] design keyboard_TOP has port wordled[7] driven by constant 1
+INFO: [Synth 8-5546] ROM "keyread" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-3886] merging instance 'wordled_reg[7]' (FD) to 'sentenceled_reg[3]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\sentenceled_reg[3] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 722.984 ; gain = 460.945
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 768.082 ; gain = 504.859
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -249,13 +288,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 745.102 ; gain = 483.063
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 771.766 ; gain = 508.543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 763.363 ; gain = 501.324
+Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 789.414 ; gain = 526.191
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -266,10 +305,8 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3332] Sequential element (ledmode_reg[1]) is unused and will be removed from module keyboard_TOP.
-WARNING: [Synth 8-3332] Sequential element (ledmode_reg[0]) is unused and will be removed from module keyboard_TOP.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -293,7 +330,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -306,7 +343,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -318,25 +355,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -352,56 +389,62 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     2|
+|1     |BUFG   |    12|
 |2     |CARRY4 |    18|
 |3     |LUT1   |     7|
-|4     |LUT2   |    15|
-|5     |LUT3   |    19|
-|6     |LUT4   |    34|
-|7     |LUT5   |    51|
-|8     |LUT6   |    39|
-|9     |FDRE   |   118|
-|10    |FDSE   |    10|
-|11    |LD     |    11|
-|12    |IBUF   |    13|
-|13    |OBUF   |    25|
+|4     |LUT2   |    41|
+|5     |LUT3   |    33|
+|6     |LUT4   |   299|
+|7     |LUT5   |   295|
+|8     |LUT6   |   489|
+|9     |MUXF7  |   128|
+|10    |FDRE   |   147|
+|11    |FDSE   |    15|
+|12    |LD     |   562|
+|13    |LDP    |     1|
+|14    |IBUF   |    13|
+|15    |OBUF   |    25|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+------------+--------------------------+------+
 |      |Instance    |Module                    |Cells |
 +------+------------+--------------------------+------+
-|1     |top         |                          |   362|
-|2     |  Readpulse |heartbeat__parameterized1 |    46|
-|3     |  SSDpulse  |heartbeat__parameterized0 |    30|
-|4     |  KeyR      |keyboard_receiver         |    28|
-|5     |  senDeb    |doubledebounce            |    17|
-|6     |  wordDeb   |doubledebounce_0          |    47|
-|7     |    hb      |heartbeat                 |    33|
+|1     |top         |                          |  2085|
+|2     |  KeyE      |keyboard_encoder          |  1686|
+|3     |  KeyR      |keyboard_receiver         |    29|
+|4     |  Readpulse |heartbeat__parameterized1 |    52|
+|5     |  SSDpulse  |heartbeat__parameterized0 |    30|
+|6     |  SenD      |sentence_decoder          |    29|
+|7     |  senDeb    |doubledebounce            |    18|
+|8     |  wordDeb   |doubledebounce_0          |    50|
+|9     |    hb      |heartbeat                 |    33|
 +------+------------+--------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 804.613 ; gain = 541.391
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 773.176 ; gain = 207.734
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 773.176 ; gain = 511.137
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 804.613 ; gain = 193.969
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 804.613 ; gain = 541.391
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 29 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 709 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'keyboard_TOP' is not ideal for floorplanning, since the cellview 'keyboard_encoder' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 773.176 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 804.613 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 11 instances were transformed.
-  LD => LDCE: 11 instances
+  A total of 563 instances were transformed.
+  LD => LDCE: 562 instances
+  LDP => LDPE: 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-37 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
+45 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 773.176 ; gain = 524.395
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 773.176 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 804.613 ; gain = 554.660
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 804.613 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.runs/synth_1/keyboard_TOP.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file keyboard_TOP_utilization_synth.rpt -pb keyboard_TOP_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Apr 28 09:55:01 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 29 19:20:11 2019...

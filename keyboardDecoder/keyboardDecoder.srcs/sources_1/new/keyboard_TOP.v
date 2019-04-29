@@ -40,12 +40,13 @@ module keyboard_TOP(
     //Keyboard Variables
     wire [7:0] keycodecheck;
     wire [6:0] SSDcode;
-    reg [6:0] tempSC;
     wire flag;
     reg [7:0] keycodetest;
     reg [7:0] keycode;
     reg [6:0] prevSSD;
     reg keyread;
+    reg tempprevSSD;
+    reg arrow;
     
     //Sentence Reader Variables
     wire nextworddeb;
@@ -64,10 +65,24 @@ module keyboard_TOP(
     //Sentence Writer Variables
     reg [1:0] letcounter = 2'd0;
     reg [7:0] keystore;
+    wire [255:0] customsentence;
+    wire [255:0] currentsentence;
     
     //Keyboard Submodules
     keyboard_receiver KeyR(.sysclk(sysclk), .keyclk(keyclk), .keydata(keydata), .keycode(keycodecheck), .flag(flag));
     keyboard_decoder KeyD(.decletter(keycode), .sysclk(sysclk), .encSSD(SSDcode));
+    
+    keyboard_encoder KeyE(
+    .sysclk(sysclk),
+    .save(nextsendeb),
+    .NW(nextworddeb),
+    .PW(prevworddeb),
+    .letcounter(letcounter),
+    .wordcounter(wordcounter), 
+    .letter(keystore), 
+    .currentsentence(currentsentence), 
+    .customsentence(customsentence)
+    );
     
     //Sentence Submodules
     doubledebounce wordDeb (
@@ -90,6 +105,9 @@ module keyboard_TOP(
     
     sentence_decoder SenD (
     .sysclk(sysclk),
+    .keywrite(keywrite),
+    .currentsentence(currentsentence),
+    .customsentence(customsentence),
     .sencounter(sencounter),
     .wordcounter(wordcounter),
     .SSDcounter(SSDcounter),
@@ -105,11 +123,16 @@ module keyboard_TOP(
         if (flag == 1'b1) begin
             keycodetest <= keycodecheck;
         end
+        if (keyread == 1'b1 && arrow == 1'b0) begin
+            arrow <= 1'b1;
+        end else if (arrow == 1'b1) arrow = 1'b0;
     end
     
     //Checks if the key was released then reads the next scan code
     always @(keycodetest) begin
         if (keycodetest == 8'hf0) begin
+            keyread <= 1'b1;
+        end else if (keycodetest == 8'he0) begin
             keyread <= 1'b1;
         end else if (keyread == 1'b1) begin
             if (keywrite == 1'b0) begin
@@ -129,21 +152,21 @@ module keyboard_TOP(
         end
     end
     
-    always @(SSDcode) begin
-        if (holdenable == 1'b1) tempSC = prevSSD;
-        else tempSC = SSDcode;
-    end
-    
     // Increasing and decreasing sentence/word counters
      always @(posedge sysclk) begin
+     
         if (autoread == 1'b1 && autopulse == 1'b1) wordcounter <= wordcounter + 3'd1;
-        else if (autoread == 1'b0 && (nextworddeb == 1'b1 || keycode == 8'h6A)) wordcounter <= wordcounter + 3'd1;
-        else if (autoread ==1'b0 && (prevworddeb == 1'b1 || keycode == 8'h61)) wordcounter <= wordcounter - 3'd1;
-        if (nextsendeb == 1'b1 || keycode == 8'h63) begin
-            sencounter <= sencounter + 2'd1;
-        end else if (prevsendeb == 1'b1 || keycode == 8'h60) begin
-            sencounter <= sencounter - 2'd1;
+        else if (autoread == 1'b0 && (nextworddeb == 1'b1 || (keycode == 8'h74 && arrow == 1'b1))) wordcounter <= wordcounter + 3'd1;
+        else if (autoread ==1'b0 && (prevworddeb == 1'b1 || (keycode == 8'h6B && arrow == 1'b1))) wordcounter <= wordcounter - 3'd1;
+        
+        if (keywrite == 1'b0) begin
+            if (nextsendeb == 1'b1 || (keycode == 8'h75 && flag == 1'b1)) begin
+                sencounter <= sencounter + 2'd1;
+            end else if (prevsendeb == 1'b1 || (keycode == 8'h72 && flag == 1'b1)) begin
+                sencounter <= sencounter - 2'd1;
+            end
         end
+        
     end
     
     //Assigns SSD anode depending on current letter
@@ -160,7 +183,7 @@ module keyboard_TOP(
                 SSDcathode <= prevSSD;
                 SSDanode <= 4'b0111;
             end else begin
-                SSDcathode <= tempSC;
+                SSDcathode <= SSDcode;
                 prevSSD <= SSDcathode;
                 SSDanode <= 4'b0111;
             end
@@ -171,7 +194,7 @@ module keyboard_TOP(
     end
     
     //Assigns sentence, word and SSD LEDs
-    always @(*) begin
+    always @(posedge sysclk) begin
         case(SSDcounter)
             2'd0: tempSSDanode = 4'b0111;
             2'd1: tempSSDanode = 4'b1011;

@@ -18,7 +18,7 @@ proc create_report { reportName command } {
   }
 }
 set_param xicom.use_bs_reader 1
-create_project -in_memory -part xc7a35tcpg236-1
+create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -33,6 +33,7 @@ read_verilog -library xil_defaultlib {
   {C:/Users/patre/Downloads/Lab 5 resources/doubledebounce.v}
   {C:/Users/patre/Downloads/Lab 5 resources/heartbeat.v}
   C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_decoder.v
+  C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_encoder.v
   C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_receiver.v
   C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/sentence_decoder.v
   C:/Users/patre/FPGA/keyboardDecoder/keyboardDecoder.srcs/sources_1/new/keyboard_TOP.v
@@ -51,7 +52,7 @@ set_property used_in_implementation false [get_files C:/Users/patre/FPGA/keyboar
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
-synth_design -top keyboard_TOP -part xc7a35tcpg236-1
+synth_design -top keyboard_TOP -part xc7a100tcsg324-1
 
 
 # disable binary constraint mode for synth run checkpoints

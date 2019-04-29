@@ -4,9 +4,12 @@
 module sentence_decoder(
     
     input wire sysclk,
+    input wire keywrite,
     input wire [1:0] sencounter,
     input wire [2:0] wordcounter,
     input wire [1:0] SSDcounter,
+    input wire [255:0] customsentence,
+    input wire [255:0] currentsentence,
     output reg [7:0] letter
     
     );
@@ -21,14 +24,18 @@ module sentence_decoder(
     reg [255:0] sen4 = 256'h002C3324_00324334_32241C2D_001C2C24_002C3324_324B3C24_1B241C4B_00000000;
     
     //Combinational Logic
-    always @(*) begin
-        case(sencounter)
-            2'd0: sentence = sen1;
-            2'd1: sentence = sen2;
-            2'd2: sentence = sen3;
-            2'd3: sentence = sen4;
-            default: sentence = 256'd0;
-        endcase
+    always @(posedge sysclk) begin
+        if (keywrite == 1'b1) begin
+            sentence = customsentence;
+        end else begin 
+            case(sencounter)
+                2'd0: sentence = sen1;
+                2'd1: sentence = sen2;
+                2'd2: sentence = sen3;
+                2'd3: sentence = currentsentence;
+                default: sentence = 256'd0;
+            endcase
+        end
         word = sentence[255-wordcounter*32 -: 32];
         letter = word[31-SSDcounter*8 -: 8];
     end

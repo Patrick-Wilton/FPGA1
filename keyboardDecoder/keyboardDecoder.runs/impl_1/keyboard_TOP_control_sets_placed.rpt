@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sun Apr 28 09:55:40 2019
+| Date         : Mon Apr 29 19:20:55 2019
 | Host         : OldMateLaptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file keyboard_TOP_control_sets_placed.rpt
 | Design       : keyboard_TOP
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    21 |
-| Unused register locations in slices containing registers |   109 |
+| Number of unique control sets                            |    45 |
+| Unused register locations in slices containing registers |   131 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,14 +34,14 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      1 |           10 |
-|      2 |            2 |
+|      1 |           12 |
+|      2 |            3 |
 |      4 |            2 |
 |      7 |            2 |
-|      8 |            2 |
-|      9 |            1 |
+|      8 |            6 |
+|     10 |            1 |
 |     12 |            1 |
-|    16+ |            1 |
+|    16+ |           18 |
 +--------+--------------+
 
 
@@ -51,42 +51,66 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              23 |           10 |
+| No           | No                    | No                     |             602 |          339 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              73 |           23 |
-| Yes          | No                    | No                     |              27 |           12 |
+| No           | Yes                   | No                     |              78 |           28 |
+| Yes          | No                    | No                     |              23 |           12 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              16 |            4 |
+| Yes          | Yes                   | No                     |              22 |            6 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------------+-------------------------+--------------------------+------------------+----------------+
-|        Clock Signal        |      Enable Signal      |     Set/Reset Signal     | Slice Load Count | Bel Load Count |
-+----------------------------+-------------------------+--------------------------+------------------+----------------+
-| ~keyclk_IBUF_BUFG          |                         |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[1]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[5]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[6]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[0]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[4]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[3]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode[2]_i_1_n_0 |                          |                1 |              1 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycode__0[7]      |                          |                1 |              1 |
-|  keyread_reg_i_2_n_0       |                         |                          |                1 |              1 |
-|  SSDpulse/count_reg[1]_0   |                         |                          |                1 |              2 |
-|  letcounter_reg[1]_i_2_n_0 |                         |                          |                1 |              2 |
-|  sysclk_IBUF_BUFG          | syson_IBUF              |                          |                1 |              4 |
-| ~keyclk_IBUF_BUFG          | KeyR/keycount           | KeyR/keycount[3]_i_1_n_0 |                1 |              4 |
-|  sysclk_IBUF_BUFG          |                         | SSDcathode[6]_i_1_n_0    |                5 |              7 |
-|  sysclk_IBUF_BUFG          | prevSSD                 |                          |                1 |              7 |
-|  keycode_reg[7]_i_1_n_0    |                         |                          |                2 |              8 |
-|  sysclk_IBUF_BUFG          | KeyR/E[0]               |                          |                2 |              8 |
-|  sysclk_IBUF_BUFG          |                         |                          |                4 |              9 |
-|  sysclk_IBUF_BUFG          | wordDeb/hb/E[0]         | reset_IBUF               |                3 |             12 |
-|  sysclk_IBUF_BUFG          |                         | reset_IBUF               |               18 |             66 |
-+----------------------------+-------------------------+--------------------------+------------------+----------------+
++-----------------------------------------+--------------------------+---------------------------+------------------+----------------+
+|               Clock Signal              |       Enable Signal      |      Set/Reset Signal     | Slice Load Count | Bel Load Count |
++-----------------------------------------+--------------------------+---------------------------+------------------+----------------+
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[1]_i_1_n_10 |                           |                1 |              1 |
+|  keyread_reg_i_2_n_10                   |                          | keyread_reg_i_3_n_10      |                1 |              1 |
+|  sysclk_IBUF_BUFG                       |                          | sencounter_reg_n_10_[0]   |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       |                          |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[0]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[4]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[2]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[5]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[6]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode[3]_i_1_n_10 |                           |                1 |              1 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycode__0[7]       |                           |                1 |              1 |
+|  sysclk_IBUF_BUFG                       |                          | wordcounter_reg__0[2]     |                1 |              1 |
+|  SSDpulse/CLK                           |                          |                           |                1 |              2 |
+|  sysclk_IBUF_BUFG                       | ledmode[1]_i_2_n_10      | ledmode[1]_i_1_n_10       |                1 |              2 |
+|  sysclk_IBUF_BUFG                       |                          | wordcounter_reg__0[1]     |                2 |              2 |
+| ~keyclk_IBUF_BUFG                       | KeyR/keycount            | KeyR/keycount[3]_i_1_n_10 |                1 |              4 |
+|  sysclk_IBUF_BUFG                       | syson_IBUF               | SSDanode[3]_i_1_n_10      |                1 |              4 |
+|  sysclk_IBUF_BUFG                       |                          | SSDcathode[6]_i_1_n_10    |                5 |              7 |
+|  sysclk_IBUF_BUFG                       | prevSSD                  |                           |                2 |              7 |
+|  KeyE/customword_reg[15]_i_2_n_10       |                          |                           |                3 |              8 |
+|  KeyE/customword_reg[31]_i_2_n_10       |                          |                           |                4 |              8 |
+|  KeyE/customword_reg[23]_i_2_n_10       |                          |                           |                4 |              8 |
+|  keycode_reg[7]_i_1_n_10                |                          |                           |                2 |              8 |
+|  sysclk_IBUF_BUFG                       | KeyR/flag                |                           |                2 |              8 |
+|  KeyE/customword_reg[7]_i_2_n_10        |                          |                           |                7 |              8 |
+|  letcounter_reg[1]_i_2_n_10             |                          |                           |                3 |             10 |
+|  sysclk_IBUF_BUFG                       | wordDeb/hb/E[0]          | reset_IBUF                |                3 |             12 |
+|  n_9_788_BUFG                           |                          |                           |               20 |             32 |
+|  n_4_783_BUFG                           |                          |                           |               23 |             32 |
+|  n_2_793_BUFG                           |                          |                           |               21 |             32 |
+|  n_6_787_BUFG                           |                          |                           |               18 |             32 |
+|  n_7_794_BUFG                           |                          |                           |               13 |             32 |
+|  n_5_781_BUFG                           |                          |                           |               26 |             32 |
+|  n_3_785_BUFG                           |                          |                           |               24 |             32 |
+|  KeyE/currentsentence_reg[127]_i_2_n_10 |                          |                           |               16 |             32 |
+|  KeyE/currentsentence_reg[223]_i_2_n_10 |                          |                           |               12 |             32 |
+|  KeyE/currentsentence_reg[31]_i_2_n_10  |                          |                           |               13 |             32 |
+|  KeyE/currentsentence_reg[63]_i_2_n_10  |                          |                           |               16 |             32 |
+|  n_8_790_BUFG                           |                          |                           |               14 |             32 |
+|  KeyE/customsentence_reg[255]_i_2_n_10  |                          |                           |               20 |             32 |
+|  n_0_791_BUFG                           |                          |                           |               24 |             32 |
+|  n_1_789_BUFG                           |                          |                           |               19 |             32 |
+|  KeyE/currentsentence_reg[95]_i_2_n_10  |                          |                           |               17 |             32 |
+|  sysclk_IBUF_BUFG                       |                          |                           |               18 |             37 |
+|  sysclk_IBUF_BUFG                       |                          | reset_IBUF                |               18 |             66 |
++-----------------------------------------+--------------------------+---------------------------+------------------+----------------+
 
 
